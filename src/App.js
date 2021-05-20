@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import DisplayContainer from "./DisplayContainer";
+import featureList from "./featureList";
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
@@ -46,9 +47,9 @@ class App extends Component {
   };
 
   render() {
-    const features = Object.keys(this.props.features).map((feature, idx) => {
+    const features = Object.keys(featureList).map((feature, idx) => {
       const featureHash = feature + "-" + idx;
-      const options = this.props.features[feature].map((item) => {
+      const options = featureList[feature].map((item) => {
         const itemHash = slugify(JSON.stringify(item));
         return (
           <div key={itemHash} className="feature__item">

@@ -1,6 +1,7 @@
 import React from "react";
+import Summary from "./Summary";
 
-const DisplayContainer = ({ summary, features, total }) => {
+const DisplayContainer = ({ features, total, selected }) => {
   const USCurrencyFormat = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -13,7 +14,7 @@ const DisplayContainer = ({ summary, features, total }) => {
       </form>
       <section className="main__summary">
         <h2>Your cart</h2>
-        {summary}
+        <Summary selected={selected} USCurrencyFormat={USCurrencyFormat} />
         <div className="summary__total">
           <div className="summary__total__label">Total</div>
           <div className="summary__total__value">

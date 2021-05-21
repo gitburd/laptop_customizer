@@ -1,16 +1,18 @@
 import React from "react";
 import Summary from "./Summary";
+import Features from "./Features";
 
-const DisplayContainer = ({ features, total, selected }) => {
+const DisplayContainer = ({ total, selected, updateFeature }) => {
   const USCurrencyFormat = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
   });
+
   return (
     <main>
       <form className="main__form">
         <h2>Customize your laptop</h2>
-        <Features />
+        <Features updateFeature={updateFeature} selected={selected} />
       </form>
       <section className="main__summary">
         <h2>Your cart</h2>

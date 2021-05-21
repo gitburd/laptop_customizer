@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Header from "./Header";
 import DisplayContainer from "./DisplayContainer";
-import featureList from "./featureList";
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
@@ -47,37 +46,6 @@ class App extends Component {
   };
 
   render() {
-    const features = Object.keys(featureList).map((feature, idx) => {
-      const featureHash = feature + "-" + idx;
-      const options = featureList[feature].map((item) => {
-        const itemHash = slugify(JSON.stringify(item));
-        return (
-          <div key={itemHash} className="feature__item">
-            <input
-              type="radio"
-              id={itemHash}
-              className="feature__option"
-              name={slugify(feature)}
-              checked={item.name === this.state.selected[feature].name}
-              onChange={(e) => this.updateFeature(feature, item)}
-            />
-            <label htmlFor={itemHash} className="feature__label">
-              {item.name} ({USCurrencyFormat.format(item.cost)})
-            </label>
-          </div>
-        );
-      });
-
-      return (
-        <fieldset className="feature" key={featureHash}>
-          <legend className="feature__name">
-            <h3>{feature}</h3>
-          </legend>
-          {options}
-        </fieldset>
-      );
-    });
-
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
@@ -87,9 +55,9 @@ class App extends Component {
       <div className="App">
         <Header />
         <DisplayContainer
-          features={features}
           total={total}
           selected={this.state.selected}
+          updateFeature={this.updateFeature}
         />
       </div>
     );

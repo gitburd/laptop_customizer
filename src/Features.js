@@ -1,16 +1,22 @@
 import React, { Component } from "react";
-import FeaturesList from "./FeaturesList";
-import slugify from "slugify";
-
-const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+import featureList from "./featureList";
+import Feature from "./Feature";
 
 class Features extends Component {
   state = {};
+
   render() {
-    return <p>HEY!</p>;
+    const features = Object.keys(featureList).map((feature, idx) => {
+      return (
+        <Feature
+          feature={feature}
+          idx={idx}
+          selected={this.props.selected}
+          updateFeature={this.props.updateFeature}
+        />
+      );
+    });
+    return features;
   }
 }
 

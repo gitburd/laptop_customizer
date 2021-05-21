@@ -3,11 +3,7 @@ import Summary from "./Summary";
 
 export default class Cart extends Component {
   render() {
-    const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    });
-    const { total, selected } = this.props;
+    const { total, selected, USCurrencyFormat } = this.props;
     return (
       <section className="main__summary">
         <h2>Your cart</h2>

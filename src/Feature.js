@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import slugify from "slugify";
 import featureList from "./featureList";
-const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 export default class Feature extends Component {
   render() {
-    const { feature, idx, selected } = this.props;
+    const { feature, idx, selected, USCurrencyFormat } = this.props;
     const featureHash = feature + "-" + idx;
     const options = featureList[feature].map((item) => {
       const itemHash = slugify(JSON.stringify(item));

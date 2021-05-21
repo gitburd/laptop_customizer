@@ -13,6 +13,7 @@ class Features extends Component {
           idx={idx}
           selected={this.props.selected}
           updateFeature={this.props.updateFeature}
+          USCurrencyFormat={this.props.USCurrencyFormat}
         />
       );
     });
